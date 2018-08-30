@@ -18,20 +18,36 @@ body {
   }
   
   .square {
-    background: rgb(20, 9, 179);
-    border: 1px solid #999;
+    background: rgb(143, 138, 221);
+    border: 1px solid rgb(34, 40, 121);
     float: left;
-    font-size: 24px;
+    font-size: 48px;
     font-weight: bold;
-    line-height: 34px;
-    height: 34px;
-    margin-right: -1px;
-    margin-top: -1px;
+    line-height: 68px;
+    height: 68px;
+    margin-right: -2px;
+    margin-top: -2px;
     padding: 0;
     text-align: center;
-    width: 34px;
+    width: 68px;
   }
   
+  .circle {
+    background: rgb(221, 150, 138);
+    border: 1px solid rgb(121, 54, 34);
+    float: left;
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 68px;
+    height: 68px;
+    margin-right: -2px;
+    margin-top: -2px;
+    padding: 0;
+    text-align: center;
+    width: 68px;
+    border-radius: 34px;
+  }
+
   .square:focus {
     outline: none;
   }
