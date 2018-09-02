@@ -2,18 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-class StyleButton extends React.Component{
-    render(){
-        return(
-            <button>Estilo 1</button>
-        )
-    }
-}
+const elementClass = ['square', 'circle', 'simple', 'bouncy', 'wave'];
 
 function Square(props) {
+    let delay = 0; 
+    if (props.style === elementClass[3]){
+        delay = (props.number % 3) * 0.07;
+    }
+    else if(props.style === elementClass[4]){
+        delay = props.number * 0.3;
+    }
     return( 
         <button 
-            className="circle"
+            className={props.style}
+            style={{
+                animationDelay: `${delay}s`
+            }}
             onClick={props.onClick}
         >
             {props.value}
@@ -26,7 +30,9 @@ class Board extends React.Component {
       return (
         <Square 
             value={this.props.squares[i]}
+            style={this.props.style}
             onClick={() => this.props.onClick(i)}
+            number={i}
         />
       );
     }
@@ -62,7 +68,8 @@ class Game extends React.Component {
                 squares: Array(9).fill(null)
             }],
             stepNumber: 0,
-            XIsNext: true
+            XIsNext: true,
+            style: 0
         }
     }
     
@@ -87,11 +94,18 @@ class Game extends React.Component {
         this.setState({
             stepNumber:step,
             xIsNext: (step % 2) === 0,
-        })
+        });
     }
 
+    changeStyle(i){
+        this.setState({
+            style: i
+        });
+    }
+    
     render() {
         const history = this.state.history;
+        const style = this.state.style;
         const stepNumber = this.state.stepNumber;
         const current = history[stepNumber];
         const winner = calculateWinner(current.squares);
@@ -104,7 +118,14 @@ class Game extends React.Component {
                 <li key = {move}>
                     <button onClick= {() => this.jumpTo(move)}>{desc}</button>
                 </li>
-                );
+            );
+        });
+        const options = elementClass.map((style, index) => {
+            return(
+                <li key = {style}>
+                    <button onClick= {() => this.changeStyle(index)}>{'Estilo: ' + style} </button>
+                </li>
+            );
         });
         let status;
         if (winner){
@@ -113,20 +134,25 @@ class Game extends React.Component {
             status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
         }
         return (
-            <div className="options">
-            <StyleButton/>
-            <div className="game">
-            <div className="game-board">
-                <Board 
-                    squares={current.squares}
-                    onClick={(i) => this.handleClick(i)}
-                />
-            </div>
-            <div className="game-info">
-                <div>{status}</div>
-                <ol>{moves}</ol>
-            </div>
-            </div>
+            <div>
+                <div className="game">
+                    <div className="game-board">
+                        <Board 
+                            squares={current.squares}
+                            style={elementClass[style]}
+                            onClick={(i) => this.handleClick(i)}
+                        />
+                    </div>
+                </div>
+                <div clasName="options">
+                    <div className="game-info">
+                        <div>{status}</div>
+                        <ol>{moves}</ol>
+                    </div>
+                    <div className="style-options">
+                        <ol>{options}</ol>
+                    </div>    
+                </div>
             </div>
         );
     }
