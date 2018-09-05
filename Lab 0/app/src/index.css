@@ -8,6 +8,11 @@ ol, ul {
   display: table;
 }
 
+.board{
+  margin-top: 9vmin;
+  width: 60vmin;
+}
+
 .status {
   margin-bottom: 10px;
 }
@@ -17,12 +22,9 @@ ol, ul {
 }
 
 .game {
-  display: flex;
-  flex-direction: row;
-}
-
-.game-info {
-  margin-left: 20px;
+  display: inline-block;
+  width: 100vw;
+  margin: auto;
 }
 
 .navbar {
@@ -59,10 +61,10 @@ ol, ul {
   border: 1px solid rgb(34, 40, 121);
   color: rgb(34, 40, 121);
   float: left;
-  font-size: 13vw;
+  font-size: 13vmin;
   font-weight: bold;
-  width: 20vw;
-  height: 20vw;
+  width: 20vmin;
+  height: 20vmin;
   margin-right: -1px;
   margin-top: -1px;
   text-align: center;
@@ -74,15 +76,15 @@ ol, ul {
 }
 
 .circle {
-  border-radius: 10vw;
+  border-radius: 10vmin;
   background: rgb(221, 150, 138);
   border: 1px solid rgb(121, 54, 34);
   color:  rgb(121, 54, 34);
   float: left;
-  font-size: 13vw;
+  font-size: 13vmin;
   font-weight: bold;
-  width: 20vw;
-  height: 20vw;
+  width: 20vmin;
+  height: 20vmin;
   margin-right: -1px;
   margin-top: -1px;
   text-align: center;
@@ -94,15 +96,16 @@ ol, ul {
 }
 
 .simple{
-  border-radius:5vw;
+  border-radius:5vmin;
   background-color: rgb(88, 88, 88);
   border:1px solid #FFFFFF;
   color:#FFFFFF;
   float: left;
-  font-size: 13vw;
+  font-size: 13vmin;
   font-weight: bold;
-  height: 20vw;
-  width: 20vw;
+  text-align: center;
+  height: 20vmin;
+  width: 20vmin;
   margin-right: -1px;
   margin-top: -1px;
   transition: all 0.2s;
@@ -113,15 +116,16 @@ ol, ul {
 }
 
 .bouncy{
-  border-radius:2vw;
+  border-radius:2vmin;
   float: left;
   border:1px solid #FFFFFF;
   color:rgb(39, 177, 108);
   background-color: rgb(9, 92, 50);
-  font-size: 13vw;
+  font-size: 13vmin;
   font-weight: bold;
-  height: 20vw;
-  width: 20vw;
+  text-align: center;
+  height: 20vmin;
+  width: 20vmin;
   margin-right: -1px;
   margin-top: -1px;
   animation:bouncy 5s infinite linear;
@@ -132,11 +136,11 @@ ol, ul {
   background-color:rgb(39, 177, 108);
 }
 @keyframes bouncy {
-  0%{top:0em}
-  40%{top:0em}
-  43%{top:-0.9em}
-  46%{top:0em}
-  48%{top:-0.4em}
+  0%{top:0vmin}
+  40%{top:0vmin}
+  43%{top:-9vmin}
+  46%{top:0vmin}
+  48%{top:-4vmin}
   50%{top:0em}
   100%{top:0em}
 }
@@ -147,10 +151,11 @@ ol, ul {
   color:rgb(53, 39, 177);
   background-color: rgb(36, 128, 214);
   float: left;
-  font-size: 13vw;
+  font-size: 13vmin;
+  text-align: center;
   font-weight: bold;
-  height: 20vw;
-  width: 20vw;
+  height: 20vmin;
+  width: 20vmin;
   margin-right: -1px;
   margin-top: -1px;
   animation:wave 6s infinite linear;
@@ -161,11 +166,11 @@ ol, ul {
   background-color:rgb(53, 39, 177);
 }
 @keyframes wave {
-  0%{height:20vw; width:20vw}
-  25%{height:22vw; width:22vw}
-  50%{height:24vw; width:24vw}
-  75%{height:22vw; width:22vw}
-  100%{height:20vw; width:20vw}
+  0%{height:20vmin; width:20vmin; font-size: 13vmin}
+  25%{height:18vmin; width:18vmin; font-size: 11vmin}
+  50%{height:16vmin; width:16vmin; font-size: 9vmin}
+  75%{height:18vmin; width:18vmin; font-size: 11vmin}
+  100%{height:20vmin; width:20vmin; font-size: 13vmin}
 }
 
 @media all and (max-width:30em){

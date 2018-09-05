@@ -31,8 +31,8 @@ class StylesMenu extends React.Component {
 
     render(){
         return(
-            <div class='container'>
-                <div class='navbar'>
+            <div className='container'>
+                <div className='navbar'>
                     <ul>{this.buildmenu()}</ul>
                 </div>
             </div>
@@ -49,15 +49,13 @@ function Square(props) {
         delay = props.number * 0.3;
     }
     return( 
-        <button 
+        <a 
             className={props.style}
-            style={{
-                animationDelay: `${delay}s`
-            }}
+            style={{animationDelay: `${delay}s`}}
             onClick={props.onClick}
         >
             {props.value}
-        </button>
+        </a>
     );
 }
   
@@ -65,6 +63,7 @@ class Board extends React.Component {
     renderSquare(i) {
       return (
         <Square 
+            key={i}
             value={this.props.squares[i]}
             style={this.props.style}
             onClick={() => this.props.onClick(i)}
@@ -74,24 +73,16 @@ class Board extends React.Component {
     }
   
     render() {
+        let rows = [];
+        for(let j = 0; j < 3; j++){
+            let row = [];
+            for(let i = 0; i < 3; i++){
+                row.push(this.renderSquare(i + j*3));
+            }
+            rows.push(<div className="board-row" key={j}>{row}</div>);
+        }
         return (
-            <div>
-                <div className="board-row">
-                    {this.renderSquare(0)}
-                    {this.renderSquare(1)}
-                    {this.renderSquare(2)}
-                </div>
-                <div className="board-row">
-                    {this.renderSquare(3)}
-                    {this.renderSquare(4)}
-                    {this.renderSquare(5)}
-                </div>
-                <div className="board-row">
-                    {this.renderSquare(6)}
-                    {this.renderSquare(7)}
-                    {this.renderSquare(8)}
-                </div>
-            </div>
+            <div className="board">{rows}</div>
         );
     }
 }
@@ -162,8 +153,8 @@ class Game extends React.Component {
                         style={elementClass[this.props.style]}
                         onClick={(i) => this.handleClick(i)}
                     />
-                </div>
-                <div className="game-info">
+                </div>{/*
+                */}<div className="game-info">
                     <div>{status}</div>
                     <ol>{moves}</ol>
                 </div>
@@ -209,12 +200,10 @@ class MainPage extends React.Component{
     render(){
         return(
         <div>
-            <StylesMenu
-                onClick= {(i) => this.changeStyle(i)}
-            />
-            <Game
-                style = {this.state.style}
-            />
+            <StylesMenu onClick= {(i) => this.changeStyle(i)}/>
+            <center>
+                <Game style = {this.state.style}/>
+            </center>
         </div>
         )
     }
