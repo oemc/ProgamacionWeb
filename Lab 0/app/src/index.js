@@ -1,8 +1,44 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import 'milligram';
 
 const elementClass = ['square', 'circle', 'simple', 'bouncy', 'wave'];
+
+function StyleButton(props){
+    return(
+        <a onClick = {props.onClick}>
+            {props.value}
+        </a>
+    );
+}
+
+class StylesMenu extends React.Component {
+    buildmenu(){
+        return (
+            elementClass.map((style, index) => {
+                return(
+                <li key = {style}>
+                    <StyleButton
+                        value = {style}
+                        onClick = {() => this.props.onClick(index)}
+                    />
+                </li>
+                );
+            })
+        );
+    }
+
+    render(){
+        return(
+            <div class='container'>
+                <div class='navbar'>
+                    <ul>{this.buildmenu()}</ul>
+                </div>
+            </div>
+        );
+    }
+}
 
 function Square(props) {
     let delay = 0; 
@@ -59,7 +95,7 @@ class Board extends React.Component {
         );
     }
 }
-  
+
 class Game extends React.Component {
     constructor(props) {
         super(props);
@@ -68,8 +104,7 @@ class Game extends React.Component {
                 squares: Array(9).fill(null)
             }],
             stepNumber: 0,
-            XIsNext: true,
-            style: 0
+            XIsNext: true
         }
     }
     
@@ -97,15 +132,8 @@ class Game extends React.Component {
         });
     }
 
-    changeStyle(i){
-        this.setState({
-            style: i
-        });
-    }
-    
     render() {
         const history = this.state.history;
-        const style = this.state.style;
         const stepNumber = this.state.stepNumber;
         const current = history[stepNumber];
         const winner = calculateWinner(current.squares);
@@ -120,13 +148,6 @@ class Game extends React.Component {
                 </li>
             );
         });
-        const options = elementClass.map((style, index) => {
-            return(
-                <li key = {style}>
-                    <button onClick= {() => this.changeStyle(index)}>{'Estilo: ' + style} </button>
-                </li>
-            );
-        });
         let status;
         if (winner){
             status = 'Winner: ' + winner;
@@ -134,24 +155,17 @@ class Game extends React.Component {
             status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
         }
         return (
-            <div>
-                <div className="game">
-                    <div className="game-board">
-                        <Board 
-                            squares={current.squares}
-                            style={elementClass[style]}
-                            onClick={(i) => this.handleClick(i)}
-                        />
-                    </div>
+            <div className="game">
+                <div className="game-board">
+                    <Board 
+                        squares={current.squares}
+                        style={elementClass[this.props.style]}
+                        onClick={(i) => this.handleClick(i)}
+                    />
                 </div>
-                <div clasName="options">
-                    <div className="game-info">
-                        <div>{status}</div>
-                        <ol>{moves}</ol>
-                    </div>
-                    <div className="style-options">
-                        <ol>{options}</ol>
-                    </div>    
+                <div className="game-info">
+                    <div>{status}</div>
+                    <ol>{moves}</ol>
                 </div>
             </div>
         );
@@ -177,10 +191,38 @@ function calculateWinner(squares){
     }
     return null;
 }
+
+class MainPage extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            style: 0
+        }
+    }
+
+    changeStyle(i){
+        this.setState({
+            style: i
+        });
+    }
+    
+    render(){
+        return(
+        <div>
+            <StylesMenu
+                onClick= {(i) => this.changeStyle(i)}
+            />
+            <Game
+                style = {this.state.style}
+            />
+        </div>
+        )
+    }
+}
   // ========================================
   
 ReactDOM.render(
-    <Game />,
+    <MainPage/>,
     document.getElementById('root')
 );
   

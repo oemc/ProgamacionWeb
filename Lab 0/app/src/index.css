@@ -1,196 +1,192 @@
-body {
-    font: 14px "Century Gothic", Futura, sans-serif;
-    margin: 20px;
-  }
-  
-  ol, ul {
-    padding-left: 30px;
-  }
-  
-  .board-row:after {
-    clear: both;
-    content: "";
-    display: table;
-  }
-  
-  .status {
-    margin-bottom: 10px;
-  }
-  
-  .square {
-    background: rgb(143, 138, 221);
-    border: 1px solid rgb(34, 40, 121);
-    color: rgb(34, 40, 121);
-    float: left;
-    font-size: 48px;
-    font-weight: bold;
-    line-height: 68px;
-    height: 68px;
-    margin-right: -2px;
-    margin-top: -2px;
+ol, ul {
+  padding-left: 30px;
+}
+
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.status {
+  margin-bottom: 10px;
+}
+
+.kbd-navigation .square:focus {
+  background: #ddd;
+}
+
+.game {
+  display: flex;
+  flex-direction: row;
+}
+
+.game-info {
+  margin-left: 20px;
+}
+
+.navbar {
+  margin-bottom: 10px;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
     padding: 0;
+    overflow: hidden;
+    background-color: #606c76;
+}
+
+.navbar li {
+    float: left;
+    margin-bottom: 0;
+}
+
+.navbar li a {
+    display: block;
+    color: white;
     text-align: center;
-    width: 68px;
-    transition: all 0.2s;
-  }
-  .square:focus {
-    outline: none;
-  }
-  .square:hover{
-    color:rgb(143, 138, 221);
-    background-color:rgb(34, 40, 121);
-  }
+    padding: 14px 16px;
+    text-decoration: none;
+}
 
-  .circle {
-    background: rgb(221, 150, 138);
-    border: 1px solid rgb(121, 54, 34);
-    color:  rgb(121, 54, 34);
-    float: left;
-    font-size: 48px;
-    font-weight: bold;
-    line-height: 68px;
-    height: 68px;
-    margin-right: -2px;
-    margin-top: -2px;
-    padding: 0;
-    text-align: center;
-    width: 68px;
-    border-radius: 34px;
-    transition: all 0.2s;
-  }
-  .circle:focus {
-    outline: none;
-  }
-  .circle:hover{
-    color:rgb(221, 150, 138);
-    background-color: rgb(121, 54, 34);
-  }
+.navbar li a:hover {
+    background-color: #ab5dda;
+}
 
-  .simple{
-    background-color: rgb(88, 88, 88);
-    float: left;
-    font-size: 48px;
-    font-weight: bold;
-    line-height: 68px;
-    height: 68px;
-    width: 68px;
-    margin-right: -2px;
-    margin-top: -2px;
-    padding:0;
-    border:1px solid #FFFFFF;
-    border-radius:12px;
-    text-decoration:none;
-    color:#FFFFFF;
-    transition: all 0.2s;
-  }
-  .simple:focus {
-    outline: none;
-  }
-  .simple:hover{
-    color:rgb(88, 88, 88);
-    background-color:#FFFFFF;
-  }
+.square {
+  background: rgb(143, 138, 221);
+  border: 1px solid rgb(34, 40, 121);
+  color: rgb(34, 40, 121);
+  float: left;
+  font-size: 13vw;
+  font-weight: bold;
+  width: 20vw;
+  height: 20vw;
+  margin-right: -1px;
+  margin-top: -1px;
+  text-align: center;
+  transition: all 0.2s;
+}
+.square:hover{
+  color:rgb(143, 138, 221);
+  background-color:rgb(34, 40, 121);
+}
 
-  .bouncy{
-    float: left;
-    font-size: 48px;
-    font-weight: bold;
-    line-height: 68px;
-    height: 68px;
-    width: 68px;
-    margin-right: -2px;
-    margin-top: -2px;
-    padding:0;
-    border:1px solid #FFFFFF;
-    border-radius:20px;
-    text-decoration:none;
-    color:rgb(39, 177, 108);
-    background-color: rgb(9, 92, 50);
-    animation:bouncy 5s infinite linear;
-    position:relative;
-  }
-  .bouncy:focus {
-    outline: none;
-  }
-  .bouncy:hover{
-    color:rgb(9, 92, 50);
-    background-color:rgb(39, 177, 108);
-  }
-  @keyframes bouncy {
-    0%{top:0em}
-    40%{top:0em}
-    43%{top:-0.9em}
-    46%{top:0em}
-    48%{top:-0.4em}
-    50%{top:0em}
-    100%{top:0em}
-  }
+.circle {
+  border-radius: 10vw;
+  background: rgb(221, 150, 138);
+  border: 1px solid rgb(121, 54, 34);
+  color:  rgb(121, 54, 34);
+  float: left;
+  font-size: 13vw;
+  font-weight: bold;
+  width: 20vw;
+  height: 20vw;
+  margin-right: -1px;
+  margin-top: -1px;
+  text-align: center;
+  transition: all 0.2s;
+}
+.circle:hover{
+  color:rgb(221, 150, 138);
+  background-color: rgb(121, 54, 34);
+}
 
-  .wave{
-    float: left;
-    font-size: 48px;
-    font-weight: bold;
-    line-height: 68px;
-    height: 68px;
-    width: 68px;
-    margin-right: -2px;
-    margin-top: -2px;
-    padding:0;
-    border:1px solid rgba(255, 255, 255, 0.336);
-    border-radius:5px;
-    text-decoration:none;
-    color:rgb(53, 39, 177);
-    background-color: rgb(36, 128, 214);
-    animation:wave 6s infinite linear;
-    position:relative;
-  }
-  .wave:focus {
-    outline: none;
-  }
-  .wave:hover{
-    color:rgb(36, 128, 214);
-    background-color:rgb(53, 39, 177);
-  }
-  @keyframes wave {
-    0%{height:68px; width:68px}
-    25%{height:73px; width:73px}
-    50%{height:78px; width:78px}
-    75%{height:73px; width:73px}
-    100%{height:68px; width:68px}
-  }
+.simple{
+  border-radius:5vw;
+  background-color: rgb(88, 88, 88);
+  border:1px solid #FFFFFF;
+  color:#FFFFFF;
+  float: left;
+  font-size: 13vw;
+  font-weight: bold;
+  height: 20vw;
+  width: 20vw;
+  margin-right: -1px;
+  margin-top: -1px;
+  transition: all 0.2s;
+}
+.simple:hover{
+  color:rgb(88, 88, 88);
+  background-color:#FFFFFF;
+}
 
-  .kbd-navigation .square:focus {
-    background: #ddd;
+.bouncy{
+  border-radius:2vw;
+  float: left;
+  border:1px solid #FFFFFF;
+  color:rgb(39, 177, 108);
+  background-color: rgb(9, 92, 50);
+  font-size: 13vw;
+  font-weight: bold;
+  height: 20vw;
+  width: 20vw;
+  margin-right: -1px;
+  margin-top: -1px;
+  animation:bouncy 5s infinite linear;
+  position:relative;
+}
+.bouncy:hover{
+  color:rgb(9, 92, 50);
+  background-color:rgb(39, 177, 108);
+}
+@keyframes bouncy {
+  0%{top:0em}
+  40%{top:0em}
+  43%{top:-0.9em}
+  46%{top:0em}
+  48%{top:-0.4em}
+  50%{top:0em}
+  100%{top:0em}
+}
+
+.wave{
+  border-radius:5px;
+  border:1px solid rgba(255, 255, 255, 0.336);
+  color:rgb(53, 39, 177);
+  background-color: rgb(36, 128, 214);
+  float: left;
+  font-size: 13vw;
+  font-weight: bold;
+  height: 20vw;
+  width: 20vw;
+  margin-right: -1px;
+  margin-top: -1px;
+  animation:wave 6s infinite linear;
+  position:relative;
+}
+.wave:hover{
+  color:rgb(36, 128, 214);
+  background-color:rgb(53, 39, 177);
+}
+@keyframes wave {
+  0%{height:20vw; width:20vw}
+  25%{height:22vw; width:22vw}
+  50%{height:24vw; width:24vw}
+  75%{height:22vw; width:22vw}
+  100%{height:20vw; width:20vw}
+}
+
+@media all and (max-width:30em){
+  square{
+    display:block;
+    margin:0.4em auto;
   }
-  
-  .game {
-    display: flex;
-    flex-direction: row;
+  circle{
+    display:block;
+    margin:0.4em auto;
   }
-  
-  .game-info {
-    margin-left: 20px;
+  simple{
+    display:block;
+    margin:0.4em auto;
   }
-  
-  @media all and (max-width:30em){
-    square{
-      display:block;
-      margin:0.4em auto;
-    }
-    circle{
-      display:block;
-      margin:0.4em auto;
-    }
-    simple{
-      display:block;
-      margin:0.4em auto;
-    }
-    bouncy{
-      display:block;
-      margin:0.4em auto;
-    }
-    pulsing{
-      display:block;
-      margin:0.4em auto;
-    }
+  bouncy{
+    display:block;
+    margin:0.4em auto;
   }
+  pulsing{
+    display:block;
+    margin:0.4em auto;
+  }
+}
